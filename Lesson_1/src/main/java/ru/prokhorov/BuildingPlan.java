@@ -3,9 +3,10 @@ package ru.prokhorov;
 import org.springframework.stereotype.Component;
 
 @Component("BuildingPlan")
-public class BuildingPlan {
+public class BuildingPlan implements Hospital{
 
-    public String getBuildingPlan() {
-        return "building plan";
+    @Override
+    public String getInformation() {
+        return "Building plan";
     }
 }
