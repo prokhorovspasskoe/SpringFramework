@@ -12,10 +12,17 @@ public class Main {
                 buildSessionFactory();
 
         Session session = null;
-        session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        Product product = session.get(Product.class, 1);
-        System.out.println(product.getTitle());
-        session.close();
+
+        try{
+            session = sessionFactory.getCurrentSession();
+            session.beginTransaction();
+            Product product = session.get(Product.class, 1);
+            System.out.println("Product name - " + product.getTitle());
+            System.out.println("Product price - " + product.getPrice());
+        }finally {
+            assert session != null;
+            session.close();
+            sessionFactory.close();
+        }
     }
 }
