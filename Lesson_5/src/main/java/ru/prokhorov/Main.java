@@ -7,11 +7,17 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
+
     public static void main(String[] args) {
         ApplicationContext context =
                 new AnnotationConfigApplicationContext("ru/prokhorov");
 
-        ProductDao productDao = context.getBean(ProductDao.class);
+        Session session = null;
+
+        SessionFactory sessionFactory = context.getBean(new Configuration().
+                configure("hibernate_config.xml").
+                addAnnotatedClass(Product.class).
+                buildSessionFactory().getClass());
 
     }
 }

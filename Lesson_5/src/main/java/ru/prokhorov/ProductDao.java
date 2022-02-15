@@ -5,70 +5,40 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.*;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 @Component
-@Entity
-@Table(name = "products")
 public class ProductDao {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
 
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "price")
-    private int price;
-
-    private SessionFactory sessionFactory;
-    private Session session;
-
-    public ProductDao() {
-        sessionFactory = new Configuration().
-                configure("hibernate_config.xml").
-                addAnnotatedClass(Product.class).
-                buildSessionFactory();
-        session = null;
-    }
-
-    public Product findById(int id){
-        Product product;
+    public Product findById(int id, Session session){
+        Product product = null;
         try{
-            session = sessionFactory.getCurrentSession();
             session.beginTransaction();
             product = session.get(Product.class, id);
+            System.out.println(product.getTitle());
         }finally {
             assert session != null;
             session.close();
-            sessionFactory.close();
         }
         return product;
     }
 
-    public List<Product> findAll(){
+    public List<Product> findAll(Session session){
         List<Product> productList;
         try {
-            session = sessionFactory.getCurrentSession();
             session.beginTransaction();
             productList = session.createQuery("FROM products", Product.class).getResultList();
+            System.out.println(productList.toString());
         }finally {
             assert session != null;
             session.close();
-            sessionFactory.close();
         }
         return productList;
     }
 
-    public void deleteById(int id){
+    public void deleteById(int id, Session session){
         Product product;
         try {
-            session = sessionFactory.getCurrentSession();
             session.beginTransaction();
             product = session.get(Product.class, id);
             session.delete(product);
@@ -76,20 +46,17 @@ public class ProductDao {
         }finally {
             assert session != null;
             session.close();
-            sessionFactory.close();
         }
     }
 
-    public Product saveOrUpdate(Product product){
+    public Product saveOrUpdate(Product product, Session session){
         try {
-            session = sessionFactory.getCurrentSession();
             session.beginTransaction();
             session.saveOrUpdate(product);
             session.getTransaction().commit();
         }finally {
             assert session != null;
             session.close();
-            sessionFactory.close();
         }
         return product;
     }
