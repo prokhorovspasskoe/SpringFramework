@@ -62,15 +62,16 @@ public class ProductDao {
             session.close();
             sessionFactory.close();
         }
-
         return productList;
     }
 
     public void deleteById(int id){
+        Product product;
         try {
             session = sessionFactory.getCurrentSession();
             session.beginTransaction();
-            session.createQuery("DELETE FROM products WHERE id = " + id, Product.class).executeUpdate();
+            product = session.get(Product.class, id);
+            session.delete(product);
             session.getTransaction().commit();
         }finally {
             assert session != null;
@@ -80,6 +81,16 @@ public class ProductDao {
     }
 
     public Product saveOrUpdate(Product product){
-        return null;
+        try {
+            session = sessionFactory.getCurrentSession();
+            session.beginTransaction();
+            session.saveOrUpdate(product);
+            session.getTransaction().commit();
+        }finally {
+            assert session != null;
+            session.close();
+            sessionFactory.close();
+        }
+        return product;
     }
 }

@@ -13,10 +13,5 @@ public class Main {
 
         ProductDao productDao = context.getBean(ProductDao.class);
 
-
-
-        Session session = null;
-
-
     }
 }
