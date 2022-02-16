@@ -1,23 +1,21 @@
 package ru.prokhorov;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.webapp.WebAppContext;
+
+import java.net.URL;
+import java.security.ProtectionDomain;
 
 public class Main {
-
-    public static void main(String[] args) {
-        ApplicationContext context =
-                new AnnotationConfigApplicationContext("ru/prokhorov");
-
-        Session session = null;
-
-        SessionFactory sessionFactory = context.getBean(new Configuration().
-                configure("hibernate_config.xml").
-                addAnnotatedClass(Product.class).
-                buildSessionFactory().getClass());
-
+    public static void main(String[] args) throws Exception {
+        Server server = new Server(8189);
+        ProtectionDomain domain = Main.class.getProtectionDomain();
+        URL location = domain.getCodeSource().getLocation();
+        WebAppContext webapp = new WebAppContext();
+        webapp.setContextPath("/");
+        webapp.setWar(location.toExternalForm());
+        server.setHandler(webapp);
+        server.start();
+        server.join();
     }
 }

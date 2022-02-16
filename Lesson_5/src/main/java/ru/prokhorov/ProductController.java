@@ -12,7 +12,10 @@ public class ProductController {
     @RequestMapping(value = "/show-by-id", method = RequestMethod.GET)
     public String showProductById(Model model, @RequestParam int id){
         ProductDao productDao = new ProductDao();
-//        productDao.findById()
-        return "";
+        Product product = productDao.findById(id);
+        model.addAttribute("name", product.getTitle());
+        model.addAttribute("price", product.getPrice());
+        productDao.closeSessionAndFactory();
+        return "showproduct";
     }
 }
