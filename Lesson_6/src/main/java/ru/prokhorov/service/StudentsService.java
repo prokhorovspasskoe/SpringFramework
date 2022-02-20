@@ -6,7 +6,6 @@ import ru.prokhorov.entities.Course;
 import ru.prokhorov.entities.Student;
 import ru.prokhorov.repository.StudentsRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -27,11 +26,11 @@ public class StudentsService {
     public StudentsService() {
     }
 
-    public void addStudent(Student s) {
-        studentsRepository.save(s);
+    public void deleteStudentById(Long id){
+        studentsRepository.deleteById(id);
     }
 
-    public void removeById(Long id) {
-        studentsRepository.deleteById(id);
+    public List<Course> getAllStudentCoursesById(Long id){
+        return studentsRepository.findOneById(id).getCourses();
     }
 }
