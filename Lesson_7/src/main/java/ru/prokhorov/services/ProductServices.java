@@ -1,2 +1,4 @@
-package ru.prokhorov.services;public class ProductServices {
+package ru.prokhorov.services;
+
+public class ProductServices {
 }
