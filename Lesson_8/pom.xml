@@ -48,5 +48,24 @@
         </dependency>
 
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId/>
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/rest_db?useSSL=false</url>
+                    <user>geek</user>
+                    <password>geek</password>
+                    <schemas>
+                        <schema>rest_db</schema>
+                    </schemas>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
