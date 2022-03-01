@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import ru.prokhorov.entities.FileMetaDTO;
 import ru.prokhorov.repositories.IFileMetaProvider;
 import ru.prokhorov.repositories.IFileSystemProvider;
+import ru.prokhorov.utils.HashHelper;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
