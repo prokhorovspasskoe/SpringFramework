@@ -47,5 +47,13 @@ public class FileStoreService implements IFileStoreService {
         return fileMetaProvider.getMetaFiles(subtype);
     }
 
+    @Override
+    public void deleteFile(UUID md5) {
+        String fileName = fileMetaProvider.checkFileExists(md5);
+        if(fileName != null){
+            fileMetaProvider.deleteFileMetaData(md5);
+        }else{
 
+        }
+    }
 }

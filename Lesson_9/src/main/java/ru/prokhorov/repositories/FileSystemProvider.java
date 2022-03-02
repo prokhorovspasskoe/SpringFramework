@@ -1,8 +1,8 @@
 package ru.prokhorov.repositories;
 
-import lombok.Value;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 @Component
 public class FileSystemProvider implements IFileSystemProvider {
-
+    @Value("${store.folder}")
     private String storeFolder;
 
     private Path storePath;
@@ -54,7 +54,6 @@ public class FileSystemProvider implements IFileSystemProvider {
         }
         return fullFileName;
     }
-
 
     @Override
     public void deleteFile(String fileHash) throws IOException {

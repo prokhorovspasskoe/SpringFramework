@@ -3,7 +3,7 @@ package ru.prokhorov.utils;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import lombok.NonNull;
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -17,12 +17,13 @@ import javax.sql.DataSource;
 @Configuration
 @PropertySource("classpath:connection.properties")
 public class DataSourceProvider implements TransactionManagementConfigurer {
+    @Value("${datasource.username}")
     private String USER_NAME;
-
+    @Value("${datasource.password}")
     private String PASSWORD;
-
+    @Value("${datasource.url}")
     private String DATASOURCE_URL;
-
+    @Value("${datasource.driver-class-name}")
     private String DRIVER_CLASS_NAME;
 
     @Override
