@@ -1,2 +1,4 @@
-package ru.prokhorov.repository;public interface ProductRepository {
+package ru.prokhorov.repository;
+
+public interface ProductRepository {
 }

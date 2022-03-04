@@ -1,2 +1,4 @@
-package ru.prokhorov.controllers;public class MainController {
+package ru.prokhorov.controllers;
+
+public class MainController {
 }

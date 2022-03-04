@@ -1,2 +1,4 @@
-package ru.prokhorov.controllers;public class ProductController {
+package ru.prokhorov.controllers;
+
+public class ProductController {
 }
