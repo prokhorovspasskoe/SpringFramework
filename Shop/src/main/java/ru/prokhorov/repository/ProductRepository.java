@@ -1,4 +1,7 @@
 package ru.prokhorov.repository;
 
-public interface ProductRepository {
+import org.springframework.data.repository.PagingAndSortingRepository;
+import ru.prokhorov.entities.Product;
+
+public interface ProductRepository extends PagingAndSortingRepository<Product, Long> {
 }
