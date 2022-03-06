@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
 
 import javax.sql.DataSource;
 
@@ -24,6 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(shopDataSource);
+//        User.UserBuilder users = User.builder();
+//        auth.inMemoryAuthentication()
+//                .withUser(users.username("alex").password("{noop}1234").roles("USER", "ADMIN"))
+//                .withUser(users.username("bob").password("{noop}1234").roles("USER"));
     }
 
     @Override

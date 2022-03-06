@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Страница товаров</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/resources/css/mystyle.css}">
+</head>
+<body>
+<table border = 1>
+	<tr>
+		<td class="glass">ID</td>
+		<td class="glass">TITLE</td>
+		<td class="glass">PRICE</td>
+	</tr>
+	<tr th:each="product : ${productList}">
+		<td class="glass" th:text="${product.id}"></td>
+		<td class="glass" th:text="${product.title}"></td>
+		<td class="glass" th:text="${product.price}"></td>
+	</tr>
+</table>
+</body>
+</html>
