@@ -1,5 +1,7 @@
 package ru.prokhorov.entities;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,12 +15,7 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    public Role() {
-    }
-
-    public Role(String name) {
-        this.name = name;
-    }
+    @Cascade({org.hibernate.annotations.CascadeType.DELETE, org.hibernate.annotations.CascadeType.DETACH})
 
     public Long getId() {
         return id;
@@ -34,5 +31,10 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Role name - " + name + "Role id - " + id;
     }
 }
