@@ -11,7 +11,7 @@
     <h1>Admin Panel</h1>
     <table border = 1>
         <tr th:each="role : ${rolesList}">
-            <td class="glass" th:text="@{role.name}"></td>
+            <td class="glass" th:text="${role.name}"></td>
         </tr>
     </table>
 </div>
