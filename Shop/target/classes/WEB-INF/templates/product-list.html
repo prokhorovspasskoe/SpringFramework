@@ -2,10 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
-	<title>Страница товаров</title>
+	<title>Products list</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/resources/css/mystyle.css}">
 </head>
 <body>
+<h1>Products list</h1>
 <table border = 1>
 	<tr>
 		<td class="glass">ID</td>
@@ -18,5 +19,6 @@
 		<td class="glass" th:text="${product.price}"></td>
 	</tr>
 </table>
+<a href="http://localhost:8189">Home page</a>
 </body>
 </html>
