@@ -1,4 +1,4 @@
-package ru.prokhorov.launcher;
+package ru.prokhorov.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
