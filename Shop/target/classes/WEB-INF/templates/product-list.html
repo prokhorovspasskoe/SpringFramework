@@ -17,11 +17,6 @@
 		<td class="glass" th:text="${product.id}"></td>
 		<td class="glass" th:text="${product.title}"></td>
 		<td class="glass" th:text="${product.price}"></td>
-		<td>
-			<form th:action="@{/basket/add/}" th:object="${product}" method="post">
-			<button type="submit">Add to Shopping Cart</button>
-		</form>
-			</td>
 	</tr>
 </table>
 <a href="http://localhost:8189">Home page</a>
