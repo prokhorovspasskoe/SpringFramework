@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
     @Query(value = "SELECT id, password, email FROM users WHERE username = ?1")
-    Optional<User> findByName(String name);
+    User findByName(String name);
 }
